@@ -1,9 +1,5 @@
 # DevSecOps Flask App
 
-A simple Flask application demonstrating the first two days of our DevSecOps CI/CD pipeline:
-
-- **Day 1:** Scaffolded a Flask app, configured GitHub Actions workflow placeholders  
-- **Day 2:** Added Jinja2 templates, multiple routes, form handling, and a clean package structure
 
 ---
 
