@@ -23,7 +23,7 @@ jobs:
             .
 
       - name: Scan Docker image with Trivy
-        uses: aquasecurity/trivy-action@v0.9.0
+        uses: aquasecurity/trivy-action@v0.28.0
         with:
           image-ref: aryandamle/devops_cicd:${{ github.sha }}
           format: table
