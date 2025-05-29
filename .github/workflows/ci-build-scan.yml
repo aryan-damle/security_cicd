@@ -20,8 +20,8 @@ jobs:
         uses: aquasecurity/trivy-action@v0.28.0
         with:
           image-ref: 'ttapp:latest'
-          format: 'sarif'
-          exit-code: 0
+          format: table
+          exit-code: 1
           severity: HIGH,CRITICAL
           output: 'trivy-results.sarif'
 
