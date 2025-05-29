@@ -1,29 +1,23 @@
 name: CI Build & Security Scan
+on: [push, pull_request]
+permissions:
+  actions: read
+  security-events: write
 
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
 
 jobs:
   build-and-scan:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v2
+        uses: actions/checkout@v4
 
       - name: Build Docker image
         run: |
-          docker build \
-            --tag aryandamle/devops_cicd:${{ github.sha }} \
-            .
+          docker build -t ttapp:latest .
 
       - name: Scan Docker image with Trivy
-        uses: aquasecurity/trivy-action@v0.30.0
+        uses: aquasecurity/trivy-action@v0.28.0
         with:
           image-ref: 'ttapp:latest'
           format: 'sarif'
