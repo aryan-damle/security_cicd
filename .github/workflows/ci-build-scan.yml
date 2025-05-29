@@ -23,9 +23,14 @@ jobs:
             .
 
       - name: Scan Docker image with Trivy
-        uses: aquasecurity/trivy-action@v0.28.0
+        uses: aquasecurity/trivy-action@v0.30.0
         with:
           image-ref: aryandamle/devops_cicd:${{ github.sha }}
           format: table
           exit-code: 1
           severity: HIGH,CRITICAL
+
+      - name: Upload Trivy scan results to Github Security tab
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+            sarif_file: 'trivy-results.sarif'
