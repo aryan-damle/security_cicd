@@ -118,7 +118,7 @@ This project is my attempt to create an end-to-end DevSecOps pipeline for a mini
             output: trivy-report.sarif
             #1: Blocks pushed commits with HIGH/CRITICAL vulnerability
             #0: Does not block pushed commits with HIGH/CRITICAL vulernability
-            exit-code: 0
+            exit-code: 1
             severity: HIGH,CRITICAL
 
          - name: Upload SARIF to Github Security
