@@ -1,5 +1,7 @@
-from flask import render_template, request
+from flask import render_template, request, jsonify
 from app import app
+import os
+
 
 @app.route('/')
 def index():
@@ -15,3 +17,10 @@ def greet():
         name = request.form.get('name', 'Guest')
         return render_template('hello.html', name=name)
     return render_template('greet_form.html')
+
+@app.route('/version')
+def version():
+    return jsonify({
+        "git_sha": os.getenv("GIT_SHA", "unknown"),
+        "build_date": os.getenv("BUILD_DATE", "n/a")
+    })
