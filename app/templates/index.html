@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>My DevOps CI/CD</title>
+  <!-- Include any CSS/JS you like -->
+</head>
+<body>
+  <nav>
+    <a href="{{ url_for('index') }}">Home</a>
+    <a href="{{ url_for('version') }}">Version</a>
+  </nav>
+
+  {% block content %}{% endblock %}
+
+  <footer style="margin-top: 2rem; font-size: 0.9rem; color: #666;">
+    Build SHA: {{ GIT_SHA or "unknown" }} |
+    Build Date: {{ BUILD_DATE or "n/a" }}
+  </footer>
+</body>
+</html>
