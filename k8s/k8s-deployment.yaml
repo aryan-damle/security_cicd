@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+  creationTimestamp: "2025-06-01T07:58:02Z"
+  generation: 1
+  labels:
+    app: devops-cicd
+  name: devops-cicd
+  namespace: default
+  resourceVersion: "2007"
+  uid: 43158872-b76b-4d29-896b-f58bcd111c12
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: devops-cicd
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: devops-cicd
+    spec:
+      containers:
+      - image: devops_cicd:k8s
+        imagePullPolicy: IfNotPresent
+        name: devops-cicd-vskrd
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+status:
+  availableReplicas: 1
+  conditions:
+  - lastTransitionTime: "2025-06-01T07:58:04Z"
+    lastUpdateTime: "2025-06-01T07:58:04Z"
+    message: Deployment has minimum availability.
+    reason: MinimumReplicasAvailable
+    status: "True"
+    type: Available
+  - lastTransitionTime: "2025-06-01T07:58:02Z"
+    lastUpdateTime: "2025-06-01T07:58:04Z"
+    message: ReplicaSet "devops-cicd-57c849455c" has successfully progressed.
+    reason: NewReplicaSetAvailable
+    status: "True"
+    type: Progressing
+  observedGeneration: 1
+  readyReplicas: 1
+  replicas: 1
+  updatedReplicas: 1
