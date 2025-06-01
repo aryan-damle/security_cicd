@@ -1,5 +1,7 @@
 FROM python:3.9-slim-buster
 
+ARG GIT_SHA
+ARG BUILD_DATE
 ARG TRIVY_VERSION=0.30.0
 RUN apt-get update \
  && apt-get install -y --no-install-recommends \
@@ -20,6 +22,8 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
+ENV GIT_SHA=$GIT_SHA
+ENV BUILD_DATE=$BUILD_DATE
 
 COPY . .
 
